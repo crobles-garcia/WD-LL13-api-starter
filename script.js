@@ -50,6 +50,30 @@ if (fetchFactBtn) {
   fetchFactBtn.addEventListener('click', fetchAndDisplayFact);
 }
 
+// Function to fetch and display today's fact
+function fetchTodayFact() {
+  const outputElement = document.getElementById('output');
+  outputElement.innerText = 'Loading today\'s fact...';
+
+  fetch('https://uselessfacts.jsph.pl/api/v2/facts/today')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      outputElement.innerHTML = '<strong>Today\'s Useless Fact:</strong><br>' + data.text;
+    })
+    .catch(function(error) {
+      outputElement.textContent = 'Sorry, could not load today\'s fact.';
+      console.error('Error fetching today\'s fact:', error);
+    });
+}
+
+// Add event listener to the 'Get Today Fact' button
+const todayFactBtn = document.getElementById('today-fact-btn');
+if (todayFactBtn) {
+  todayFactBtn.addEventListener('click', fetchTodayFact);
+}
+
 // Use this script to write your fetch logic
 // You'll fetch data from your selected API and display it on the page
 

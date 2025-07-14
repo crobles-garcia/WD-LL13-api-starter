@@ -18,5 +18,7 @@ h1 {
   border: 1px solid #ccc;
   background-color: white;
   border-radius: 6px;
-  min-height: 80px;
+  height: auto;
+  word-break: break-word;
+  transition: min-height 0.2s;
 }
